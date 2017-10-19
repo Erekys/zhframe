@@ -2,11 +2,12 @@
 /**
  * Created by PhpStorm.
  * User: kali
- * Date: 2017/10/14
- * Time: 13:43
+ * Date: 2017/10/19
+ * Time: 17:10
  */
-class Sql
-{
+namespace  zhframe\database\DB;
+use database\DBinterface;
+class DB implements DBinterface(){
     protected $_dbHandle;
     protected $_result;
     // 连接数据库
@@ -19,8 +20,8 @@ class Sql
             exit('错误: ' . $e->getMessage());
         }
     }
-    // 查询所有
-    public function selectAll()
+        // 查询所有
+        public function selectAll()
     {
         $sql = sprintf("select * from `%s`", $this->_table);
         $sth = $this->_dbHandle->prepare($sql);
@@ -28,8 +29,8 @@ class Sql
 
         return $sth->fetchAll();
     }
-    // 根据条件 (id) 查询
-    public function select($id)
+        // 根据条件 (id) 查询
+        public function select($id)
     {
         $sql = sprintf("select * from `%s` where `id` = '%s'", $this->_table, $id);
         $sth = $this->_dbHandle->prepare($sql);
@@ -37,8 +38,8 @@ class Sql
 
         return $sth->fetch();
     }
-    // 根据条件 (id) 删除
-    public function delete($id)
+        // 根据条件 (id) 删除
+        public function delete($id)
     {
         $sql = sprintf("delete from `%s` where `id` = '%s'", $this->_table, $id);
         $sth = $this->_dbHandle->prepare($sql);
@@ -46,30 +47,30 @@ class Sql
 
         return $sth->rowCount();
     }
-    // 自定义SQL查询，返回影响的行数
-    public function query($sql)
+        // 自定义SQL查询，返回影响的行数
+        public function query($sql)
     {
         $sth = $this->_dbHandle->prepare($sql);
         $sth->execute();
 
         return $sth->rowCount();
     }
-    // 新增数据
-    public function add($data)
+        // 新增数据
+        public function add($data)
     {
         $sql = sprintf("insert into `%s` %s", $this->_table, $this->formatInsert($data));
 
         return $this->query($sql);
     }
-    // 修改数据
-    public function update($id, $data)
+        // 修改数据
+        public function update($id, $data)
     {
         $sql = sprintf("update `%s` set %s where `id` = '%s'", $this->_table, $this->formatUpdate($data), $id);
 
         return $this->query($sql);
     }
-    // 将数组转换成插入格式的sql语句
-    private function formatInsert($data)
+        // 将数组转换成插入格式的sql语句
+        private function formatInsert($data)
     {
         $fields = array();
         $values = array();
@@ -83,8 +84,8 @@ class Sql
 
         return sprintf("(%s) values (%s)", $field, $value);
     }
-    // 将数组转换成更新格式的sql语句
-    private function formatUpdate($data)
+        // 将数组转换成更新格式的sql语句
+        private function formatUpdate($data)
     {
         $fields = array();
         foreach ($data as $key => $value) {

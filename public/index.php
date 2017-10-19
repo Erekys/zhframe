@@ -12,4 +12,4 @@ define('APP_DEBUG', true);
 // 网站根URL
 define('APP_URL', 'http://localhost:8024/');
 // 加载框架
-require './zhframe/start.php';
+require '../zhframe/start.php';

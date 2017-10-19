@@ -1,12 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: kali
- * Date: 2017/10/14
- * Time: 13:40
- */
-/**
- * zhframe核心框架
+ * MyPHP核心框架
  */
 class Core
 {
@@ -43,7 +37,7 @@ class Core
         // 数据为空的处理
         $queryString  = empty($queryString) ? array() : $queryString;
         // 实例化控制器
-        $controller = $controllerName . 'Controller';
+        $controller = $controllerName .'Controller';
         $dispatch = new $controller($controllerName, $action);
         // 如果控制器存和动作存在，这调用并传入URL参数
         if ((int)method_exists($controller, $action)) {
@@ -98,9 +92,9 @@ class Core
     // 自动加载控制器和模型类
     static function loadClass($class)
     {
-        $frameworks = FRAME_PATH . $class . '.class.php';
-        $controllers = APP_PATH . 'application/controllers/' . $class . '.class.php';
-        $models = APP_PATH . 'application/models/' . $class . '.class.php';
+        $frameworks = FRAME_PATH . $class . '.php';
+        $controllers = APP_PATH . 'application/controllers/' . $class . '.php';
+        $models = APP_PATH . 'application/models/' . $class . '.php';
         if (file_exists($frameworks)) {
             // 加载框架核心类
             include $frameworks;

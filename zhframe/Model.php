@@ -5,7 +5,7 @@
  * Date: 2017/10/14
  * Time: 13:43
  */
-class Model extends Sql
+class Model extends DB
 {
     protected $_model;
     protected $_table;
