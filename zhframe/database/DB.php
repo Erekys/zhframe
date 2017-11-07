@@ -5,9 +5,9 @@
  * Date: 2017/10/19
  * Time: 17:10
  */
-namespace  zhframe\database\DB;
-use database\DBinterface;
-class DB implements DBinterface(){
+namespace  zhframe\database;
+use zhframe\database\DBinterface;
+class DB implements DBinterface{
     protected $_dbHandle;
     protected $_result;
     // 连接数据库

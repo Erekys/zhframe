@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: kali
- * Date: 2017/10/14
- * Time: 13:43
+ * User: Erekys
+ * Date: 2017/10/19
+ * Time: 20:43
  */
 class DB
 {
